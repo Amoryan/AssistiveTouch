@@ -1,9 +1,8 @@
 # 前言
 　　前段时间学习了Window和WindowManager，但是并没有实际的用到它，只是简单的了解了其基本流程和功能，于是想写一个Demo来加深对Window以及WindowManager的理解，就有了这篇文章，写的比较粗糙。
-# 项目地址
-　　[AssistiveTouch](https://github.com/Amoryan/AssistiveTouch)
-　　简陋的效果图![001](/images/001.gif)
 # 实现
+　　简陋的效果图
+　　![001](/images/001.gif)
 ## type的选择
 　　为了让其悬浮在桌面上，它必须有一个System Window的type类型。
 ```kotlin
