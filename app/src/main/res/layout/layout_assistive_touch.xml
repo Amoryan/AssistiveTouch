@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/menuView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_assistive_touch_bg" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/menuCl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_assistive_touch_bg"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/volumeTv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/ic_volume"
+            android:gravity="center"
+            android:text="声音"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/searchTv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/ic_search"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/volumeTv"
+            app:layout_constraintTop_toBottomOf="@+id/volumeTv" />
+
+        <TextView
+            android:id="@+id/favoriteTv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/ic_favorite"
+            android:gravity="center"
+            android:text="收藏"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintLeft_toRightOf="@+id/volumeTv"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/volumeTv" />
+
+        <TextView
+            android:id="@+id/lockTv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/ic_lock"
+            android:gravity="center"
+            android:text="锁屏"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="@+id/searchTv"
+            app:layout_constraintRight_toRightOf="@+id/searchTv"
+            app:layout_constraintTop_toBottomOf="@+id/searchTv" />
+
+        <TextView
+            android:id="@+id/captureTv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/ic_capture"
+            android:gravity="center"
+            android:text="截屏"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintLeft_toLeftOf="@+id/favoriteTv"
+            app:layout_constraintRight_toRightOf="@+id/favoriteTv"
+            app:layout_constraintTop_toBottomOf="@+id/favoriteTv" />
+
+        <TextView
+            android:id="@+id/homeTv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="5dp"
+            android:drawableTop="@mipmap/ic_home"
+            android:gravity="center"
+            android:text="主页"
+            android:textColor="#ffffff"
+            android:textSize="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lockTv" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
