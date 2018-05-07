@@ -1,9 +1,11 @@
 package com.yanfangxiong.assistivetouch
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.PixelFormat
 import android.os.Build
 import android.view.*
+import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import kotlinx.android.synthetic.main.layout_assistive_touch.view.*
 
@@ -39,10 +41,15 @@ class AssistiveTouch(
 
     private var isMoving = false
 
+    private var scrollAnimator: ObjectAnimator? = null
+    private var layoutParamsX: Int = 0
+    private var layoutParamsY: Int = 0
+
     init {
         assistiveTouch.menuView.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    scrollAnimator?.cancel()
                     downX = event.rawX
                     downY = event.rawY
                 }
@@ -109,12 +116,41 @@ class AssistiveTouch(
         val top = lp.y
         val right = assistiveTouchWindowManager.windowWidth - menuWidth - left
         val bottom = assistiveTouchWindowManager.windowHeight - menuHeight - top
+        scrollAnimator = ObjectAnimator()
         when (mapOf(left to 0, top to 1, right to 2, bottom to 3).minBy { it.key }?.value) {
-            0 -> lp.x = 0
-            1 -> lp.y = 0
-            2 -> lp.x = assistiveTouchWindowManager.windowWidth - menuWidth
-            3 -> lp.y = assistiveTouchWindowManager.windowHeight - menuHeight
+            0 -> {
+                scrollAnimator?.propertyName = "layoutParamsX"
+                scrollAnimator?.duration = left.toLong()
+                scrollAnimator?.setIntValues(left, 0)
+            }
+            1 -> {
+                scrollAnimator?.propertyName = "layoutParamsY"
+                scrollAnimator?.duration = top.toLong()
+                scrollAnimator?.setIntValues(top, 0)
+            }
+            2 -> {
+                scrollAnimator?.propertyName = "layoutParamsX"
+                scrollAnimator?.duration = right.toLong()
+                scrollAnimator?.setIntValues(left, assistiveTouchWindowManager.windowWidth - menuWidth)
+            }
+            3 -> {
+                scrollAnimator?.propertyName = "layoutParamsY"
+                scrollAnimator?.duration = bottom.toLong()
+                scrollAnimator?.setIntValues(top, assistiveTouchWindowManager.windowHeight - menuHeight)
+            }
         }
+        scrollAnimator?.target = this
+        scrollAnimator?.interpolator = LinearInterpolator()
+        scrollAnimator?.start()
+    }
+
+    fun setLayoutParamsX(x: Int) {
+        lp.x = x
+        assistiveTouchWindowManager.updateAssistiveTouch(assistiveTouch, lp)
+    }
+
+    fun setLayoutParamsY(y: Int) {
+        lp.y = y
         assistiveTouchWindowManager.updateAssistiveTouch(assistiveTouch, lp)
     }
 
