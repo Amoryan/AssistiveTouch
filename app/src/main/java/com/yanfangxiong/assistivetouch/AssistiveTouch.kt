@@ -53,10 +53,11 @@ class AssistiveTouch(
                     downY = event.rawY
                     lp.x = Math.floor(lp.x + diffX + 0.5).toInt()
                     lp.y = Math.floor(lp.y + diffY + 0.5).toInt()
-                    adjustLayoutParamsPosition()
+                    adjustPositionWhenMove()
                     assistiveTouchWindowManager.updateAssistiveTouch(assistiveTouch, lp)
                     isMoving = true
                 }
+                MotionEvent.ACTION_UP -> adjustPositionWhenActionUp()
             }
             false
         }
@@ -87,7 +88,7 @@ class AssistiveTouch(
         assistiveTouch.homeTv.setOnClickListener(this)
     }
 
-    private fun adjustLayoutParamsPosition() {
+    private fun adjustPositionWhenMove() {
         if (lp.x < 0) {
             lp.x = 0
         }
@@ -101,6 +102,20 @@ class AssistiveTouch(
         if (lp.y + menuHeight > assistiveTouchWindowManager.surplusHeight) {
             lp.y = assistiveTouchWindowManager.surplusHeight - menuHeight
         }
+    }
+
+    private fun adjustPositionWhenActionUp() {
+        val left = lp.x
+        val top = lp.y
+        val right = assistiveTouchWindowManager.windowWidth - menuWidth - left
+        val bottom = assistiveTouchWindowManager.windowHeight - menuHeight - top
+        when (mapOf(left to 0, top to 1, right to 2, bottom to 3).minBy { it.key }?.value) {
+            0 -> lp.x = 0
+            1 -> lp.y = 0
+            2 -> lp.x = assistiveTouchWindowManager.windowWidth - menuWidth
+            3 -> lp.y = assistiveTouchWindowManager.windowHeight - menuHeight
+        }
+        assistiveTouchWindowManager.updateAssistiveTouch(assistiveTouch, lp)
     }
 
     private fun getCompatWindowType(): Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
