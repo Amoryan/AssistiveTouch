@@ -15,14 +15,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_assistive_touch_bg"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/volumeTv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:drawablePadding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
             android:drawableTop="@mipmap/ic_volume"
             android:gravity="center"
             android:text="声音"
@@ -34,12 +33,11 @@
 
         <TextView
             android:id="@+id/searchTv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="37dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="5dp"
             android:drawableTop="@mipmap/ic_search"
             android:gravity="center"
             android:text="搜索"
@@ -51,12 +49,11 @@
 
         <TextView
             android:id="@+id/favoriteTv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="15dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="37dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="5dp"
             android:drawableTop="@mipmap/ic_favorite"
             android:gravity="center"
             android:text="收藏"
@@ -68,10 +65,9 @@
 
         <TextView
             android:id="@+id/lockTv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:drawablePadding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
             android:drawableTop="@mipmap/ic_lock"
             android:gravity="center"
             android:text="锁屏"
@@ -83,10 +79,9 @@
 
         <TextView
             android:id="@+id/captureTv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:drawablePadding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
             android:drawableTop="@mipmap/ic_capture"
             android:gravity="center"
             android:text="截屏"
@@ -98,11 +93,10 @@
 
         <TextView
             android:id="@+id/homeTv"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="15dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
-            android:drawablePadding="5dp"
             android:drawableTop="@mipmap/ic_home"
             android:gravity="center"
             android:text="主页"

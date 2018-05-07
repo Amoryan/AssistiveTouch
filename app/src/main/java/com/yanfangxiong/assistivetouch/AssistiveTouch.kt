@@ -93,6 +93,7 @@ class AssistiveTouch(
         assistiveTouch.lockTv.setOnClickListener(this)
         assistiveTouch.captureTv.setOnClickListener(this)
         assistiveTouch.homeTv.setOnClickListener(this)
+        assistiveTouch.menuCl.setOnClickListener(this)
     }
 
     private fun adjustPositionWhenMove() {
